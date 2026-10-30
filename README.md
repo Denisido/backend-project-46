@@ -22,7 +22,15 @@ cd backend-project-46
 
 ## Использование
 
-<!-- Добавьте примеры запуска и запись asciinema — именно это смотрит работодатель -->
+Сравнение двух JSON-файлов:
+
+```bash
+gendiff file1.json file2.json
+```
+
+### Демонстрация работы
+
+[![asciicast](https://asciinema.org/a/AcoFwsmpq6COE7fx.svg)](https://asciinema.org/a/AcoFwsmpq6COE7fx)
 
 ---
 
