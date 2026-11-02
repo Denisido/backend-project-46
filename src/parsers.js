@@ -1,5 +1,5 @@
 const parse = (data, format) => {
-  if (format === 'json') {
+  if (format === "json") {
     return JSON.parse(data);
   }
 };

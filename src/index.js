@@ -1,14 +1,13 @@
-
-import fs from 'node:fs';
-import path from 'node:path';
-import parse from './parsers.js';
+import fs from "node:fs";
+import path from "node:path";
+import parse from "./parsers.js";
 
 const genDiff = (filepath1, filepath2) => {
   const path1 = path.resolve(filepath1);
   const path2 = path.resolve(filepath2);
 
-  const data1 = fs.readFileSync(path1, 'utf-8');
-  const data2 = fs.readFileSync(path2, 'utf-8');
+  const data1 = fs.readFileSync(path1, "utf-8");
+  const data2 = fs.readFileSync(path2, "utf-8");
 
   const obj1 = parse(data1, path.extname(path1).slice(1));
   const obj2 = parse(data2, path.extname(path2).slice(1));
@@ -25,17 +24,13 @@ const genDiff = (filepath1, filepath2) => {
     }
 
     if (obj1[key] !== obj2[key]) {
-      return [
-        `  - ${key}: ${obj1[key]}`,
-        `  + ${key}: ${obj2[key]}`,
-      ];
+      return [`  - ${key}: ${obj1[key]}`, `  + ${key}: ${obj2[key]}`];
     }
 
     return [`    ${key}: ${obj1[key]}`];
   });
 
-  return `{\n${lines.join('\n')}\n}`;
+  return `{\n${lines.join("\n")}\n}`;
 };
 
 export default genDiff;
-

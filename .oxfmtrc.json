@@ -1,0 +1,10 @@
+{
+  "ignorePatterns": [
+    ".github/**",
+    "README.md",
+    "__fixtures__/**",
+    "file1.json",
+    "file2.json",
+    "package.json"
+  ]
+}
