@@ -33,3 +33,35 @@ test("compare identical files", () => {
 
   expect(genDiff(filepath, filepath)).toBe(expected);
 });
+
+test("compare flat YAML files", () => {
+  const filepath1 = path.resolve(__dirname, "../__fixtures__/file1.yml");
+  const filepath2 = path.resolve(__dirname, "../__fixtures__/file2.yml");
+
+  const expected = `{
+  - follow: false
+    host: hexlet.io
+  - proxy: 123.234.53.22
+  - timeout: 50
+  + timeout: 20
+  + verbose: true
+}`;
+
+  expect(genDiff(filepath1, filepath2)).toBe(expected);
+});
+
+test("compare flat YAML files with .yaml extension", () => {
+  const filepath1 = path.resolve(__dirname, "../__fixtures__/file1.yaml");
+  const filepath2 = path.resolve(__dirname, "../__fixtures__/file2.yaml");
+
+  const expected = `{
+  - follow: false
+    host: hexlet.io
+  - proxy: 123.234.53.22
+  - timeout: 50
+  + timeout: 20
+  + verbose: true
+}`;
+
+  expect(genDiff(filepath1, filepath2)).toBe(expected);
+});
