@@ -30,9 +30,17 @@ cd backend-project-46
 gendiff file1.json file2.json
 ```
 
+
 ### Демонстрация работы
 
+**Сравнение JSON-файлов**
+
 [![asciicast](https://asciinema.org/a/AcoFwsmpq6COE7fx.svg)](https://asciinema.org/a/AcoFwsmpq6COE7fx)
+
+**Сравнение YAML-файлов**
+
+[![asciicast](https://asciinema.org/a/GghqpKboCxicqbwy.svg)](https://asciinema.org/a/GghqpKboCxicqbwy)
+
 
 ---
 
