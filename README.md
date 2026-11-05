@@ -41,6 +41,9 @@ gendiff file1.json file2.json
 
 [![asciicast](https://asciinema.org/a/GghqpKboCxicqbwy.svg)](https://asciinema.org/a/GghqpKboCxicqbwy)
 
+**Рекурсивное сравнение JSON и YAML**
+
+[![asciicast](https://asciinema.org/a/jN3axEdqikbu1faN.svg)](https://asciinema.org/a/jN3axEdqikbu1faN)
 
 ---
 
