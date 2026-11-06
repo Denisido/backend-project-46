@@ -146,3 +146,17 @@ Property 'group3' was added with value: [complex value]`;
 
   expect(genDiff(filepath1, filepath2, "plain")).toBe(expected);
 });
+
+test("compare nested JSON files with json format", () => {
+  const filepath1 = path.resolve(__dirname, "../__fixtures__/file1-nested.json");
+  const filepath2 = path.resolve(__dirname, "../__fixtures__/file2-nested.json");
+
+  const result = genDiff(filepath1, filepath2, "json");
+
+  const parsed = JSON.parse(result);
+
+  expect(Array.isArray(parsed)).toBe(true);
+  expect(parsed[0].key).toBe("common");
+  expect(parsed[0].type).toBe("nested");
+  expect(Array.isArray(parsed[0].children)).toBe(true);
+});

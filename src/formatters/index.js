@@ -1,5 +1,6 @@
 import stylish from "./stylish.js";
 import plain from "./plain.js";
+import json from "./json.js";
 
 const format = (tree, formatName = "stylish") => {
   if (formatName === "stylish") {
@@ -8,6 +9,10 @@ const format = (tree, formatName = "stylish") => {
 
   if (formatName === "plain") {
     return plain(tree);
+  }
+
+  if (formatName === "json") {
+    return json(tree);
   }
 
   throw new Error(`Unknown format: ${formatName}`);
