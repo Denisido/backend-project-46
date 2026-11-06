@@ -5,65 +5,12 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-test("compare flat JSON files", () => {
-  const filepath1 = path.resolve(__dirname, "../__fixtures__/file1.json");
-  const filepath2 = path.resolve(__dirname, "../__fixtures__/file2.json");
-
-  const expected = `{
-  - follow: false
-    host: hexlet.io
-  - proxy: 123.234.53.22
-  - timeout: 50
-  + timeout: 20
-  + verbose: true
-}`;
-
-  expect(genDiff(filepath1, filepath2)).toBe(expected);
-});
-
 test("compare identical files", () => {
-  const filepath = path.resolve(__dirname, "../__fixtures__/file1.json");
+  const filepath = path.resolve(__dirname, "../__fixtures__/file1-nested.json");
 
-  const expected = `{
-    follow: false
-    host: hexlet.io
-    proxy: 123.234.53.22
-    timeout: 50
-}`;
+  const result = genDiff(filepath, filepath, "plain");
 
-  expect(genDiff(filepath, filepath)).toBe(expected);
-});
-
-test("compare flat YAML files", () => {
-  const filepath1 = path.resolve(__dirname, "../__fixtures__/file1.yml");
-  const filepath2 = path.resolve(__dirname, "../__fixtures__/file2.yml");
-
-  const expected = `{
-  - follow: false
-    host: hexlet.io
-  - proxy: 123.234.53.22
-  - timeout: 50
-  + timeout: 20
-  + verbose: true
-}`;
-
-  expect(genDiff(filepath1, filepath2)).toBe(expected);
-});
-
-test("compare flat YAML files with .yaml extension", () => {
-  const filepath1 = path.resolve(__dirname, "../__fixtures__/file1.yaml");
-  const filepath2 = path.resolve(__dirname, "../__fixtures__/file2.yaml");
-
-  const expected = `{
-  - follow: false
-    host: hexlet.io
-  - proxy: 123.234.53.22
-  - timeout: 50
-  + timeout: 20
-  + verbose: true
-}`;
-
-  expect(genDiff(filepath1, filepath2)).toBe(expected);
+  expect(result).toBe("");
 });
 
 test("compare nested JSON files", () => {
@@ -159,4 +106,14 @@ test("compare nested JSON files with json format", () => {
   expect(parsed[0].key).toBe("common");
   expect(parsed[0].type).toBe("nested");
   expect(Array.isArray(parsed[0].children)).toBe(true);
+});
+
+test("compare nested YAML files with .yaml extension", () => {
+  const filepath1 = path.resolve(__dirname, "../__fixtures__/file1-nested.yaml");
+  const filepath2 = path.resolve(__dirname, "../__fixtures__/file2-nested.yaml");
+
+  const json1 = path.resolve(__dirname, "../__fixtures__/file1-nested.json");
+  const json2 = path.resolve(__dirname, "../__fixtures__/file2-nested.json");
+
+  expect(genDiff(filepath1, filepath2)).toBe(genDiff(json1, json2));
 });

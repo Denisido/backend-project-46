@@ -15,21 +15,38 @@
 
 ## Установка
 
-<!-- Опишите установку: клонирование, зависимости, переменные окружения -->
-
 ```bash
 git clone https://github.com/Denisido/backend-project-46.git
 cd backend-project-46
+npm ci
+npm link
 ```
 
 ## Использование
 
-Сравнение двух JSON-файлов:
+Сравнение вложенных JSON-файлов (stylish по умолчанию):
 
 ```bash
-gendiff file1.json file2.json
+gendiff __fixtures__/file1-nested.json __fixtures__/file2-nested.json
 ```
 
+Вывод в формате plain:
+
+```bash
+gendiff --format plain __fixtures__/file1-nested.json __fixtures__/file2-nested.json
+```
+
+Вывод в формате JSON:
+
+```bash
+gendiff --format json __fixtures__/file1-nested.json __fixtures__/file2-nested.json
+```
+
+Сравнение YAML-файлов:
+
+```bash
+gendiff __fixtures__/file1-nested.yml __fixtures__/file2-nested.yml
+```
 
 ### Демонстрация работы
 
