@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import parse from "./parsers.js";
 import buildTree from "./buildTree.js";
-import stylish from "./formatters/stylish.js";
+import formatDiff from "./formatters/index.js";
 
 const genDiff = (filepath1, filepath2, format = "stylish") => {
   const path1 = path.resolve(filepath1);
@@ -16,11 +16,7 @@ const genDiff = (filepath1, filepath2, format = "stylish") => {
 
   const tree = buildTree(obj1, obj2);
 
-  if (format === "stylish") {
-    return stylish(tree);
-  }
-
-  throw new Error(`Unknown format: ${format}`);
+  return formatDiff(tree, format);
 };
 
 export default genDiff;

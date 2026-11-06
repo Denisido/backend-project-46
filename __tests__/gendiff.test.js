@@ -127,3 +127,22 @@ test("compare nested YAML files", () => {
 
   expect(genDiff(yaml1, yaml2)).toBe(genDiff(json1, json2));
 });
+
+test("compare nested JSON files with plain format", () => {
+  const filepath1 = path.resolve(__dirname, "../__fixtures__/file1-nested.json");
+  const filepath2 = path.resolve(__dirname, "../__fixtures__/file2-nested.json");
+
+  const expected = `Property 'common.follow' was added with value: false
+Property 'common.setting2' was removed
+Property 'common.setting3' was updated. From true to null
+Property 'common.setting4' was added with value: 'blah blah'
+Property 'common.setting5' was added with value: [complex value]
+Property 'common.setting6.doge.wow' was updated. From '' to 'so much'
+Property 'common.setting6.ops' was added with value: 'vops'
+Property 'group1.baz' was updated. From 'bas' to 'bars'
+Property 'group1.nest' was updated. From [complex value] to 'str'
+Property 'group2' was removed
+Property 'group3' was added with value: [complex value]`;
+
+  expect(genDiff(filepath1, filepath2, "plain")).toBe(expected);
+});
