@@ -49,6 +49,10 @@ gendiff file1.json file2.json
 
 [![asciicast](https://asciinema.org/a/48sNDSl1UyrPYzak.svg)](https://asciinema.org/a/48sNDSl1UyrPYzak)
 
+**Вывод в формате JSON**
+
+[![asciicast](https://asciinema.org/a/0Un9SP41GrlV84my.svg)](https://asciinema.org/a/0Un9SP41GrlV84my)
+
 ---
 
 <details>
